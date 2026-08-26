@@ -25,9 +25,10 @@
 
   <body>
     <div class="vh-100">
+      <%= render(partial: "shared/flash") %>
       <div class="h-100 container d-flex flex-column justify-content-center align-items-center">
         <%= logo %>
-        <div class="card card--auth shadow-sm w-100">
+        <div class="card card--auth shadow-sm">
           <div class="card-body">
             <%= yield %>
           </div>
