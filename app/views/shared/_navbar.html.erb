@@ -13,12 +13,38 @@
       </ul>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <% if user_signed_in? %>
+          <div class="dropdown">
+            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <h6 class="dropdown-header">
+                  Signed in as: <br> <%= current_user.email %>
+                </h6>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <%= button_to "Sign out", destroy_user_session_path, class: "dropdown-item", data: {'turbo-confirm': 'Are you sure?'}, method: :delete %>
+              </li>
+              <li>
+                <%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %>
+              </li>
+            </ul>
+          </div>
+
+        <% else %>
+          <li class="nav-item">
           <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-        </li>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+
       </ul>
 
     </div>
