@@ -26,8 +26,13 @@
   <body>
     <div class="vh-100">
       <%= render(partial: "shared/flash") %>
+      <% if account_page? %>
+        <%= render(partial: "shared/navbar") %>
+      <% end %>
       <div class="h-100 container d-flex flex-column justify-content-center align-items-center">
-        <%= logo %>
+        <% unless account_page? %>
+          <%= logo %>
+        <% end %>
         <div class="card card--auth shadow-sm">
           <div class="card-body">
             <%= yield %>
