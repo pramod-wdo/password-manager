@@ -4,6 +4,9 @@ class Entry < ApplicationRecord
   validates :url, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
   validate :url_must_be_valid
 
+  encrypts :username, deterministic: true
+  ecrypts :password
+
   private
 
   def url_must_be_valid
