@@ -5,7 +5,7 @@ class Entry < ApplicationRecord
   validate :url_must_be_valid
 
   encrypts :username, deterministic: true
-  ecrypts :password
+  encrypts :password
 
   private
 
