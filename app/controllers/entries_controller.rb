@@ -1,6 +1,9 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!, only: [ :new, :create ]
 
+  def index
+    @entries = current_user.entries
+  end
   def new
     @entry = Entry.new
   end
